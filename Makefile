@@ -9,3 +9,7 @@ brain-games:
 # Публикация npm пакета
 publish:
 		npm publish --dry-run
+
+# Запуск eslint
+lint:
+		npx eslint .
