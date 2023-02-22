@@ -30,7 +30,6 @@ const getResult = () => {
     const response = readlineSync.question(`Question: ${num} / `);
     if ((response === 'no' && num % 2 !== 0) || (response === 'yes' && num % 2 === 0)) {
       console.log(`Your answer: ${response}`);
-      console.log('Correct!');
     } else if ((response === 'yes' && num % 2 !== 0) || (response === 'no' && num % 2 === 0)) {
       isWrongAnswer();
       break;
@@ -38,6 +37,7 @@ const getResult = () => {
       isNotCorrectAnswer();
       break;
     }
+    console.log('Correct!');
   }
 }
 
