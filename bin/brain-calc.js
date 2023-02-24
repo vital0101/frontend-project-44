@@ -55,23 +55,26 @@ console.log(`Hello, ${userName}!`);
 
 console.log('What is the result of the expression?');
 
-for (let i = 1; i <= 3; i += 1) {
-  const randomExpression = getRandomExpression();
-  const result = getCalcExp(randomExpression);
-  const response = readlineSync.question(`Question: ${randomExpression} / `);
-  if (response === `${result}`) {
-    console.log(`Your answer: ${result}`);
-    console.log('Correct!');
-  } else if (response === '') {
-    console.log('You must enter a number!');
-    console.log(`Let\'s try again, ${userName}!`);
-    break;
-  } else if (response !== `${result}`) {
-    console.log(`Your answer: ${response}`);
-    console.log(`${response} is wrong answer ;(. Correct answer was '${result}'.`);
-    console.log(`Let\'s try again, ${userName}!`);
-    break;
-  } 
+const runGame = () => {
+  for (let i = 1; i <= 3; i += 1) {
+    const randomExpression = getRandomExpression();
+    const result = getCalcExp(randomExpression);
+    const response = readlineSync.question(`Question: ${randomExpression} / `);
+    if (response === `${result}`) {
+      console.log(`Your answer: ${result}`);
+      console.log('Correct!');
+    } else if (response === '') {
+      console.log('You must enter a number!');
+      console.log(`Let\'s try again, ${userName}!`);
+      return;
+    } else if (response !== `${result}`) {
+      console.log(`Your answer: ${response}`);
+      console.log(`${response} is wrong answer ;(. Correct answer was '${result}'.`);
+      console.log(`Let\'s try again, ${userName}!`);
+      return;
+    } 
+  }
+  console.log(`Congratulations, ${userName}!`);
 }
 
-// console.log(`Congratulations, ${userName}!`);
+runGame();
