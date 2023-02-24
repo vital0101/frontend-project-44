@@ -2,18 +2,50 @@
 
 import readlineSync from 'readline-sync';
 
-// получение случайного числа в заданнос диапозоне
-const randomInteger = (min, max) => {
-  // случайное число от min до (max+1)
-  let rand = min + Math.random() * (max + 1 - min);
+// переменная которой присвоен вычисленный случайный оператор
+const randomOperator = getRandomOperator();
+
+// функция - преобразует строку в выражение и вычисляет его
+function getCalcExp(randomExpression) {
+  return (new Function('return ' + randomExpression))();
+}
+
+// Функция получение случайного числа в заданном диапозоне
+function getRandomInteger(min, max) {
+  const rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 }
 
-// массив с повторяющемися арифметическими операторами
-const arr = ['-', '+', '*'];
+// Функция получение случайного арифметического оператора в виде строки
+function getRandomOperator() {
+  const arr = ['-', '+', '*'];
+  const randomArrEl = arr[Math.floor(Math.random() * arr.length)];
+  return randomArrEl;
+}
 
-// получение рандомного индекса элемента массива
-let rand = arr[Math.floor(Math.random() * arr.length)];
+
+// Функция - возвращает случайное выражение в виде строки
+function getRandomExpression() {
+  let expression;
+  switch (randomOperator) {
+    case '-':
+      expression = `${getRandomInteger(1, 10)} - ${getRandomInteger(1, 10)}`;
+      break;
+    case '+':
+      expression = `${getRandomInteger(1, 10)} + ${getRandomInteger(1, 10)}`;
+      break;
+    case '*':
+      expression = `${getRandomInteger(1, 10)} * ${getRandomInteger(1, 10)}`;
+      break;
+    default:
+      break;
+  }
+  return expression;
+}
+
+// ############################################################################
+
+// тело программы
 
 console.log('Welcome to the Brain Games!');
 
@@ -23,22 +55,23 @@ console.log(`Hello, ${userName}!`);
 
 console.log('What is the result of the expression?');
 
-const response = readlineSync.question(`Question: ${randomInteger(0, 100)} ${rand} ${randomInteger(0, 100)} / `);
+for (let i = 1; i <= 3; i += 1) {
+  const randomExpression = getRandomExpression();
+  const result = getCalcExp(randomExpression);
+  const response = readlineSync.question(`Question: ${randomExpression} / `);
+  if (response === `${result}`) {
+    console.log(`Your answer: ${result}`);
+    console.log('Correct!');
+  } else if (response === '') {
+    console.log('You must enter a number!');
+    console.log(`Let\'s try again, ${userName}!`);
+    break;
+  } else if (response !== `${result}`) {
+    console.log(`Your answer: ${response}`);
+    console.log(`${response} is wrong answer ;(. Correct answer was '${result}'.`);
+    console.log(`Let\'s try again, ${userName}!`);
+    break;
+  } 
+}
 
-// console.log(randomInteger(0, 100) rand randomInteger(0, 100));
-
-// Question: 4 + 10
-// Your answer: 14
-// Correct!
-// Question: 25 - 11
-// Your answer: 14
-// Correct!
-// Question: 25 * 7
-// Your answer: 175
-// Correct!
-// Congratulations, Sam!
-
-// Question: 25 * 7
-// Your answer: 145
-// '145' is wrong answer ;(. Correct answer was '175'.
-// Let's try again, Sam!
+// console.log(`Congratulations, ${userName}!`);
