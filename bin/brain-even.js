@@ -18,11 +18,13 @@ console.log('Answer "yes" if the number is even, otherwise answer "no".');
 // };
 
 const isWrongAnswer = () => {
-  console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, ${userName}!`);
+  console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.`);
+  console.log(`Let's try again, ${userName}!`)
 };
 
 const isNotCorrectAnswer = () => {
-  console.log(`Answer "yes" if the number is even, otherwise answer "no".\nLet's try again, ${userName}!`);
+  console.log(`Answer 'yes' if the number is even, otherwise answer 'no'.`);
+  console.log(`Let's try again, ${userName}!`);
 };
 
 const getResult = () => {
@@ -39,7 +41,7 @@ const getResult = () => {
     }
     console.log('Correct!');
   }
-}
+};
 
 getResult();
 
