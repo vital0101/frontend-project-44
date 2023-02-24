@@ -34,15 +34,15 @@ const getResult = () => {
       console.log(`Your answer: ${response}`);
     } else if ((response === 'yes' && num % 2 !== 0) || (response === 'no' && num % 2 === 0)) {
       isWrongAnswer();
-      break;
+      return;
     } else {
       isNotCorrectAnswer();
-      break;
+      return;
     }
     console.log('Correct!');
   }
+  console.log(`Congratulations, ${userName}!`);
 };
 
 getResult();
 
-console.log(`Congratulations, ${userName}!`);
