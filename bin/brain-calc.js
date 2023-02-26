@@ -12,8 +12,8 @@ function getCalcExp(randomExpression) {
 
 // Функция получение случайного числа в заданном диапозоне
 function getRandomInteger(min, max) {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
+  const randomNum = min + Math.random() * (max + 1 - min);
+  return Math.floor(randomNum);
 }
 
 // Функция получение случайного арифметического оператора в виде строки
