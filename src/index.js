@@ -1,49 +1,12 @@
 import readlineSync from 'readline-sync';
 
-
-// ОБЩИЕ ФРАЗЫ
-
-// Welcome to the Brain Games!
-// May I have your name? Sam
-// Hello, Sam!
-// Congratulations, Sam!
-
-// НЕВЕРНЫЙ ОТВЕТ
-
-// Your answer: 145
-// '145' is wrong answer ;(. Correct answer was '175'.
-// Let's try again, Sam!
-
-// БЛОК ФРАЗ ПОВТОРЯЮЩИХСЯ 3 РАЗА - ВЕРНЫЙ ОТВЕТ
-
-// console.log(`Question: ${выражение}
-// `Your` answer: ${ответ}
-// Correct!`)
-
-// НЕТ ОТВЕТА
-
-// console.log()
-
-
-
-// ФРАЗЫ ЛОКАЛЬНЫЕ
-
-// What is the result of the expression?
-
-
-// const gameGreeting = 'Welcome to the Brain Games!';
-// const userName = readlineSync.question('May I have your name? ');
-// const greetingUser = `Hello, ${userName}!`;
-// const gameDescription = 'What is the result of the expression?';
-const nameGame = 'brain-calc';
-
-// Функция получение случайного числа в заданном диапозоне
-function getRandomInteger(min, max) {
+// получение случайного числа в заданном диапозоне
+const getRandomInteger =(min, max) => {
   const randomNum = min + Math.random() * (max + 1 - min);
   return Math.floor(randomNum);
 }
 
-// возвращаемое условие задачи
+// возвращает условие задачи в виде строки
 const isDescriptionGame = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
@@ -53,36 +16,32 @@ const isDescriptionGame = (nameGame) => {
   }
 };
 
-// возаращаемое выражение при неверном ответе
-const isInputExpression = (nameGame) => {
-  switch (nameGame) {
-    case 'brain-even':
-      return `You must enter "yes" or "no" !);
-      Let\'s try again, ${userName}!`;
-    case 'brain-calc':
-      return `You must enter a number!);
-      Let\'s try again, ${userName}!`;
-  }
-};
+// возвращает строку при не верном ответе
+const isWrongAnswer = (correctAnswer, response, userName) => {
+  console.log(`Your answer: ${response}`);
+  console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+  console.log(`Let\'s try again, ${userName}!`);
+}
 
-const runGame = () => {
+// возвращает строку при верном ответе
+const isRightAnswer = (correctAnswer) => {
+  console.log(`Your answer: ${correctAnswer}`);
+  console.log(`Correct!`);
+
+}
+
+const runGame = (nameGame, getArr) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-  console.log(isDescriptionGame('brain-calc'));
+  console.log(isDescriptionGame(nameGame));
   for (let i = 1; i <= 3; i += 1) {
-    const response = readlineSync.question(`Question: / `);
-    if (response === noAnswer) {
-      console.log(isInputExpression('brain-calc'));
-      console.log(`Let\'s try again, ${userName}!`);
-      return;
-    } else if (response === correctAnswer) {
-      console.log(`Your answer: ${response}`);
-      console.log('Correct!');
-    } else if (response !== `${result}`) {
-      console.log(`Your answer: ${response}`);
-      console.log(`${response} is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let\'s try again, ${userName}!`);
+    const [expression, correctAnswer] = getArr;
+    const response = readlineSync.question(`Question: ${expression} / `);
+    if (response === `${correctAnswer}`) {
+      isRightAnswer(correctAnswer);
+    } else if (response !== `${correctAnswer}`) {
+      isWrongAnswer(correctAnswer, response, userName);
       return;
     }
 
@@ -90,4 +49,4 @@ const runGame = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export {runGame, isInputExpression, isDescriptionGame, getRandomInteger};
+export { runGame, getRandomInteger};
