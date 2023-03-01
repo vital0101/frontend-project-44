@@ -15,6 +15,8 @@ const isDescriptionGame = (nameGame) => {
       return 'What is the result of the expression?';
     case 'brain-gcd':
       return 'Find the greatest common divisor of given numbers.';
+    case 'brain-progression':
+      return 'What number is missing in the progression?';
   }
 };
 
