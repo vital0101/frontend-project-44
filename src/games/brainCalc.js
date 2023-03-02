@@ -1,7 +1,7 @@
 import { getRandomInteger, runGame } from '../index.js';
 
 // функция - вычисляет выражение и преобразует его в строку
-const getCalcExp = (randomExpression) => new Function(`return  $${randomExpression}`)();
+const getCalcExp = (randomExpression) => new Function(`return  ${randomExpression}`)();
 
 // Функция - получает случайный арифметический оператор в виде строки
 const getRandomOperator = () => {
@@ -23,8 +23,8 @@ const getRandomExpression = (randomOperator) => {
     case '*':
       expression = `${getRandomInteger(1, 10)} * ${getRandomInteger(1, 10)}`;
       break;
-    default:
-      break;
+    // default:
+    //   break;
   }
   return expression;
 };
