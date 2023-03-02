@@ -5,8 +5,8 @@ const getLargestDivisor = (num) => {
   const arr = [];
   for (let i = num; i > 0; i -= 1) {
     if (Number.isInteger(num / i)) {
-      let a = num / i;
-      arr.push(a);
+      const largestDivisor = num / i;
+      arr.push(largestDivisor);
     }
   }
   return arr;
@@ -32,15 +32,14 @@ const getRandomExpression = () => {
   const arrLargestDivisorOne = getLargestDivisor(randomNumOne);
   const arrLargestDivisorTwo = getLargestDivisor(randomNumTwo);
   const correctAnswer = compareArrays(arrLargestDivisorOne, arrLargestDivisorTwo);
-  const randomExpression =  `${randomNumOne} ${randomNumTwo}`;
+  const randomExpression = `${randomNumOne} ${randomNumTwo}`;
   return [randomExpression, correctAnswer];
-}
+};
 
 // Функция запуска игры
 const runGcd = () => {
   const nameGame = 'brain-gcd';
   runGame(nameGame, getRandomExpression);
-  return;
-}
+};
 
-export { runGcd };
+export default runGcd;

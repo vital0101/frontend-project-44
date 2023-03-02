@@ -1,16 +1,14 @@
 import { getRandomInteger, runGame } from '../index.js';
 
 // функция - вычисляет выражение и преобразует его в строку
-const getCalcExp = (randomExpression) => {
-  return (new Function('return ' + randomExpression))();
-}
+const getCalcExp = (randomExpression) => new Function(`return  $${randomExpression}`)();
 
 // Функция - получает случайный арифметический оператор в виде строки
 const getRandomOperator = () => {
   const arr = ['-', '+', '*'];
   const randomArrEl = arr[Math.floor(Math.random() * arr.length)];
   return randomArrEl;
-}
+};
 
 // Функция - возвращает случайное выражение в виде строки
 const getRandomExpression = (randomOperator) => {
@@ -29,7 +27,7 @@ const getRandomExpression = (randomOperator) => {
       break;
   }
   return expression;
-}
+};
 
 // Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
 const getArr = () => {
@@ -37,13 +35,12 @@ const getArr = () => {
   const randomExpression = getRandomExpression(randomOperator);
   const correctAnswer = getCalcExp(randomExpression);
   return [randomExpression, correctAnswer];
-}
+};
 
 // Функция запуска игры
 const runCalc = () => {
   const nameGame = 'brain-calc';
   runGame(nameGame, getArr);
-  return;
-}
+};
 
-export { runCalc };
+export default runCalc;

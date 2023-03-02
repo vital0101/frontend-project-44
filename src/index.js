@@ -1,10 +1,10 @@
 import readlineSync from 'readline-sync';
 
 // Функция - получение случайного числа в заданном диапозоне
-const getRandomInteger =(min, max) => {
+const getRandomInteger = (min, max) => {
   const randomNum = min + Math.random() * (max + 1 - min);
   return Math.floor(randomNum);
-}
+};
 
 // Функция - возвращает по условию описание задачи в виде строки
 const isDescriptionGame = (nameGame) => {
@@ -19,6 +19,8 @@ const isDescriptionGame = (nameGame) => {
       return 'What number is missing in the progression?';
     case 'brain-prime':
       return 'Answer "yes" if given number is prime. Otherwise answer "no"';
+    default:
+      return 'This is an empty string';
   }
 };
 
@@ -26,15 +28,14 @@ const isDescriptionGame = (nameGame) => {
 const isWrongAnswer = (correctAnswer, response, userName) => {
   console.log(`Your answer: ${response}`);
   console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-  console.log(`Let\'s try again, ${userName}!`);
-}
+  console.log(`Let's try again, ${userName}!`);
+};
 
 // Функция - возвращает строку при верном ответе
 const isRightAnswer = (correctAnswer) => {
   console.log(`Your answer: ${correctAnswer}`);
-  console.log(`Correct!`);
-
-}
+  console.log('Correct!');
+};
 
 // Функция - описывает логику игры
 const runGame = (nameGame, getArr) => {
@@ -51,9 +52,8 @@ const runGame = (nameGame, getArr) => {
       isWrongAnswer(correctAnswer, response, userName);
       return;
     }
-
   }
   console.log(`Congratulations, ${userName}!`);
 };
 
-export { runGame, getRandomInteger};
+export { runGame, getRandomInteger };
