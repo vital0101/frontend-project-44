@@ -1,7 +1,7 @@
 import { getRandomInteger, runGame } from '../index.js';
 
 // функция - вычисляет выражение и преобразует его в строку
-const getCalcExp = (randomExpression) => new Function(`return  ${randomExpression}`)();
+// const getCalcExp = (randomExpression) => new Function(`return  ${randomExpression}`)();
 
 // Функция - получает случайный арифметический оператор в виде строки
 const getRandomOperator = () => {
@@ -10,32 +10,33 @@ const getRandomOperator = () => {
   return randomArrEl;
 };
 
-// Функция - возвращает случайное выражение в виде строки
-const getRandomExpression = (randomOperator) => {
+// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
+const getRandomExpression = () => {
+  const randomOperator = getRandomOperator();
+  const randomNumOne = getRandomInteger(1, 10);
+  const randomNumTwo = getRandomInteger(1, 10);
   let expression;
+  let correctAnswer;
   switch (randomOperator) {
     case '-':
-      expression = `${getRandomInteger(1, 10)} - ${getRandomInteger(1, 10)}`;
-      break;
+      expression = `${randomNumOne} - ${randomNumTwo}`;
+      correctAnswer = randomNumOne - randomNumTwo;
+      return [expression, correctAnswer];
     case '+':
-      expression = `${getRandomInteger(1, 10)} + ${getRandomInteger(1, 10)}`;
-      break;
+      expression = `${randomNumOne} + ${randomNumTwo}`;
+      correctAnswer = randomNumOne + randomNumTwo;
+      return [expression, correctAnswer];
     case '*':
-      expression = `${getRandomInteger(1, 10)} * ${getRandomInteger(1, 10)}`;
-      break;
-    // default:
-    //   break;
+      expression = `${randomNumOne} * ${randomNumTwo}`;
+      correctAnswer = randomNumOne * randomNumTwo;
+      return [expression, correctAnswer];
+    default:
+      return 'This is an empty string';
   }
-  return expression;
 };
 
 // Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
-const getArr = () => {
-  const randomOperator = getRandomOperator();
-  const randomExpression = getRandomExpression(randomOperator);
-  const correctAnswer = getCalcExp(randomExpression);
-  return [randomExpression, correctAnswer];
-};
+const getArr = () => getRandomExpression();
 
 // Функция запуска игры
 const runCalc = () => {
