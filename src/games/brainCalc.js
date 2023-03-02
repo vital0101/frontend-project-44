@@ -1,6 +1,6 @@
 import { getRandomInteger, runGame } from '../index.js';
 
-// функция - преобразует строку в выражение и вычисляет его
+// функция - вычисляет выражение и преобразует его в строку
 const getCalcExp = (randomExpression) => {
   return (new Function('return ' + randomExpression))();
 }
@@ -31,7 +31,7 @@ const getRandomExpression = (randomOperator) => {
   return expression;
 }
 
-// Функция - возвращает массив из выражения и результат вычесленного выражения
+// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
 const getArr = () => {
   const randomOperator = getRandomOperator();
   const randomExpression = getRandomExpression(randomOperator);
@@ -39,11 +39,10 @@ const getArr = () => {
   return [randomExpression, correctAnswer];
 }
 
-// ############################################################################
-
+// Функция запуска игры
 const runCalc = () => {
   const nameGame = 'brain-calc';
-  runGame(nameGame, getArr());
+  runGame(nameGame, getArr);
   return;
 }
 

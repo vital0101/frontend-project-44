@@ -1,6 +1,6 @@
 import { runGame, getRandomInteger } from '../index.js';
 
-// возвращае массив простых делителей
+// Функция - возвращает массив простых делителей
 const getLargestDivisor = (num) => {
   const arr = [];
   for (let i = num; i > 0; i -= 1) {
@@ -12,7 +12,7 @@ const getLargestDivisor = (num) => {
   return arr;
 };
 
-// сравнивает два массива и возвращает наибольшее общее число
+// Функция - сравнивает два массива и возвращает наибольшее общее число
 const compareArrays = (arrOne, arrTwo) => {
   const arr = [];
   for (let i = 0; i < arrOne.length; i += 1) {
@@ -25,7 +25,7 @@ const compareArrays = (arrOne, arrTwo) => {
   return Math.max(...arr);
 };
 
-// возвращает массив состоящий из случайного выражения в виде строки и правильного ответа
+// Функция - возвращает массив состоящий из случайного выражения в виде строки и правильного ответа
 const getRandomExpression = () => {
   const randomNumOne = getRandomInteger(1, 30);
   const randomNumTwo = getRandomInteger(1, 30);
@@ -36,9 +36,10 @@ const getRandomExpression = () => {
   return [randomExpression, correctAnswer];
 }
 
+// Функция запуска игры
 const runGcd = () => {
   const nameGame = 'brain-gcd';
-  runGame(nameGame, getRandomExpression());
+  runGame(nameGame, getRandomExpression);
   return;
 }
 

@@ -1,12 +1,12 @@
 import readlineSync from 'readline-sync';
 
-// получение случайного числа в заданном диапозоне
+// Функция - получение случайного числа в заданном диапозоне
 const getRandomInteger =(min, max) => {
   const randomNum = min + Math.random() * (max + 1 - min);
   return Math.floor(randomNum);
 }
 
-// возвращает условие задачи в виде строки
+// Функция - возвращает по условию описание задачи в виде строки
 const isDescriptionGame = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
@@ -17,30 +17,33 @@ const isDescriptionGame = (nameGame) => {
       return 'Find the greatest common divisor of given numbers.';
     case 'brain-progression':
       return 'What number is missing in the progression?';
+    case 'brain-prime':
+      return 'Answer "yes" if given number is prime. Otherwise answer "no"';
   }
 };
 
-// возвращает строку при не верном ответе
+// Функция - возвращает строку при не верном ответе
 const isWrongAnswer = (correctAnswer, response, userName) => {
   console.log(`Your answer: ${response}`);
   console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
   console.log(`Let\'s try again, ${userName}!`);
 }
 
-// возвращает строку при верном ответе
+// Функция - возвращает строку при верном ответе
 const isRightAnswer = (correctAnswer) => {
   console.log(`Your answer: ${correctAnswer}`);
   console.log(`Correct!`);
 
 }
 
+// Функция - описывает логику игры
 const runGame = (nameGame, getArr) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(isDescriptionGame(nameGame));
   for (let i = 1; i <= 3; i += 1) {
-    const [expression, correctAnswer] = getArr;
+    const [expression, correctAnswer] = getArr();
     const response = readlineSync.question(`Question: ${expression} / `);
     if (response === `${correctAnswer}`) {
       isRightAnswer(correctAnswer);

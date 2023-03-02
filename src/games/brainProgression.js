@@ -1,12 +1,6 @@
 import { runGame, getRandomInteger } from '../index.js';
 
-// 1 получить случайное число
-// 2 создать счетчик определяющий длину прогрессии
-// 3 описать формулу создающую прогрессию
-// 4 случайным образом заменить в прогресси одно число на ..
-// 5 вывести выражение в виде строки и убранное число
-
-// получаем случайное число, начало прогрессии
+// Функция - возвращает массив в виде двух чисел (начало арифметической прогрессии)
 const getStartProgression = () => {
   const startProgressionNum = [];
   const randomNumOne = getRandomInteger(1, 20);
@@ -19,11 +13,9 @@ const getStartProgression = () => {
   return startProgressionNum;
 }
 
-// счетчик длины прогрессии
-let count = getRandomInteger(5, 10);
-
-// возвращает массив с прогрессией 
+// Функция - возвращает массив с арифметической прогрессией 
 const getProgression = () => {
+  let count = getRandomInteger(5, 10);
   const arr = getStartProgression();
   for (let i = 0; i < count; i += 1) {
     let progNum = (arr[i + 1] - arr[i]) + arr[i + 1];
@@ -32,9 +24,9 @@ const getProgression = () => {
   return arr;
 };
 
-// Функция - получает случайный элемент массива
-const getRandomExpression = (arr) => {
-  const newArr = arr;
+// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
+const getRandomExpression = () => {
+  const newArr = getProgression();
   let randomArrEl = newArr[Math.floor(Math.random() * newArr.length)];
   const correctAnswer = randomArrEl;
   const indexEl = newArr.indexOf(randomArrEl);
@@ -43,9 +35,10 @@ const getRandomExpression = (arr) => {
   return [strNewArr, correctAnswer];
 }
 
+// Функция запуска игры
 const runProgression = () => {
   const nameGame = 'brain-progression';
-  runGame(nameGame, getRandomExpression(getProgression()));
+  runGame(nameGame, getRandomExpression);
   return;
 }
 

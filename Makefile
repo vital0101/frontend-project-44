@@ -22,6 +22,10 @@ brain-gcd:
 brain-progression:
 		node bin/brain-progression.js
 
+# Запуск программы brain-prime
+brain-prime:
+		node bin/brain-prime.js
+
 # Публикация npm пакета
 publish:
 		npm publish --dry-run
