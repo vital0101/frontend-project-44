@@ -6,50 +6,23 @@ const getRandomInteger = (min, max) => {
   return Math.floor(randomNum);
 };
 
-// Функция - возвращает по условию описание задачи в виде строки
-const isDescriptionGame = (nameGame) => {
-  switch (nameGame) {
-    case 'brain-even':
-      return 'Answer "yes" if the number is even, otherwise answer "no".';
-    case 'brain-calc':
-      return 'What is the result of the expression?';
-    case 'brain-gcd':
-      return 'Find the greatest common divisor of given numbers.';
-    case 'brain-progression':
-      return 'What number is missing in the progression?';
-    case 'brain-prime':
-      return 'Answer "yes" if given number is prime. Otherwise answer "no"';
-    default:
-      return 'This is an empty string';
-  }
-};
-
-// Функция - возвращает строку при не верном ответе
-const isWrongAnswer = (correctAnswer, response, userName) => {
-  console.log(`Your answer: ${response}`);
-  console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-  console.log(`Let's try again, ${userName}!`);
-};
-
-// Функция - возвращает строку при верном ответе
-const isRightAnswer = (correctAnswer) => {
-  console.log(`Your answer: ${correctAnswer}`);
-  console.log('Correct!');
-};
-
 // Функция - описывает логику игры
-const runGame = (nameGame, getArr) => {
+const runGame = (gameCondition, getArr) => {
+  const counterOfRounds = 3;
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-  console.log(isDescriptionGame(nameGame));
-  for (let i = 1; i <= 3; i += 1) {
+  console.log(gameCondition);
+  for (let i = 1; i <= counterOfRounds; i += 1) {
     const [expression, correctAnswer] = getArr();
     const response = readlineSync.question(`Question: ${expression} / `);
     if (response === `${correctAnswer}`) {
-      isRightAnswer(correctAnswer);
+      console.log(`Your answer: ${correctAnswer}`);
+      console.log('Correct!');
     } else if (response !== `${correctAnswer}`) {
-      isWrongAnswer(correctAnswer, response, userName);
+      console.log(`Your answer: ${response}`);
+      console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
   }
