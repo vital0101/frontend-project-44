@@ -9,8 +9,8 @@ const getRandomExpression = () => {
 
 // Функция запуска игры
 const runEven = () => {
-  const nameGame = 'brain-even';
-  runGame(nameGame, getRandomExpression);
+  const gameCondition = 'Answer "yes" if the number is even, otherwise answer "no".';
+  runGame(gameCondition, getRandomExpression);
 };
 
 export default runEven;
