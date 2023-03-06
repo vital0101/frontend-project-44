@@ -4,6 +4,12 @@
 ### CodeClimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/65b91596687e1ccd8854/maintainability)](https://codeclimate.com/github/vital0101/frontend-project-44/maintainability)
 
+# Description game
+The game consists of 5 mini games.
+Each mini game will test your knowledge of mathematics.
+
+### Setup game
+[![asciicast](https://asciinema.org/a/564140.svg)](https://asciinema.org/a/564140)
 
 ### Run game brain-even
 [![asciicast](https://asciinema.org/a/564109.svg)](https://asciinema.org/a/564109)
