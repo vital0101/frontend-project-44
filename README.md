@@ -9,7 +9,7 @@ The game consists of 5 mini games.
 Each mini game will test your knowledge of mathematics.
 
 ### Setup game
-[![asciicast](https://asciinema.org/a/564140.svg)](https://asciinema.org/a/564140)
+[![asciicast](https://asciinema.org/a/565163.svg)](https://asciinema.org/a/565163)
 
 ### Run game brain-even
 [![asciicast](https://asciinema.org/a/564109.svg)](https://asciinema.org/a/564109)
