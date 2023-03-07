@@ -4,6 +4,9 @@
 ### CodeClimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/65b91596687e1ccd8854/maintainability)](https://codeclimate.com/github/vital0101/frontend-project-44/maintainability)
 
+## Minimum requirements
+Node version v18.14.0
+
 # Description game
 The game consists of 5 mini games.
 Each mini game will test your knowledge of mathematics.
