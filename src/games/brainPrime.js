@@ -1,22 +1,28 @@
 import { runGame, getRandomInteger } from '../index.js';
 
-// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
-const getRandomExpression = () => {
+// Функция - возвращает true если число простое
+const isPrime = (number) => {
   let prime = true;
-  const randomNumber = getRandomInteger(2, 50);
-  for (let i = 2; i < Math.sqrt(randomNumber); i += 1) {
-    if (randomNumber % i === 0) {
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
       prime = false;
     }
   }
-  const correctAnswer = prime ? 'yes' : 'no';
-  return [randomNumber, correctAnswer];
+  return prime;
+};
+
+// Функция - возвращает массив состоящий из выражения в виде строки
+// и результата вычесленного выражения
+const getRoundData = () => {
+  const randomExpression = getRandomInteger(2, 50);
+  const correctAnswer = isPrime(randomExpression) ? 'yes' : 'no';
+  return [randomExpression, correctAnswer];
 };
 
 // Функция запуска игры
 const runPrime = () => {
   const gameCondition = 'Answer "yes" if given number is prime. Otherwise answer "no"';
-  runGame(gameCondition, getRandomExpression);
+  runGame(gameCondition, getRoundData);
 };
 
 export default runPrime;

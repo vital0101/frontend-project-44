@@ -7,24 +7,22 @@ const getRandomInteger = (min, max) => {
 };
 
 // Функция - описывает логику игры
-const runGame = (gameCondition, getArr) => {
+const runGame = (gameCondition, roundData) => {
   const counterOfRounds = 3;
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(gameCondition);
   for (let i = 1; i <= counterOfRounds; i += 1) {
-    const [expression, correctAnswer] = getArr();
+    const [expression, correctAnswer] = roundData();
     const response = readlineSync.question(`Question: ${expression} / `);
-    if (response === `${correctAnswer}`) {
-      console.log(`Your answer: ${correctAnswer}`);
-      console.log('Correct!');
-    } else if (response !== `${correctAnswer}`) {
-      console.log(`Your answer: ${response}`);
+    console.log(`Your answer: ${response}`);
+    if (response !== `${correctAnswer}`) {
       console.log(`'${response}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
+    console.log('Correct!');
   }
   console.log(`Congratulations, ${userName}!`);
 };

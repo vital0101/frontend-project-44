@@ -7,8 +7,9 @@ const gcd = (x, y) => {
   return gcd(y, x % y);
 };
 
-// Функция - возвращает массив состоящий из случайного выражения в виде строки и правильного ответа
-const getRandomExpression = () => {
+// Функция - возвращает массив состоящий из выражения в виде строки
+// и вычисленного выражения
+const getRoundData = () => {
   const randomNumOne = getRandomInteger(1, 30);
   const randomNumTwo = getRandomInteger(1, 30);
   const correctAnswer = gcd(randomNumOne, randomNumTwo);
@@ -19,7 +20,7 @@ const getRandomExpression = () => {
 // Функция запуска игры
 const runGcd = () => {
   const gameCondition = 'Find the greatest common divisor of given numbers.';
-  runGame(gameCondition, getRandomExpression);
+  runGame(gameCondition, getRoundData);
 };
 
 export default runGcd;

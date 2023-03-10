@@ -1,16 +1,20 @@
 import { runGame, getRandomInteger } from '../index.js';
 
-// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
-const getRandomExpression = () => {
+// Функция - определяет четность числа
+const isEven = (randomNum) => (randomNum % 2 === 0 ? 'yes' : 'no');
+
+// Функция - возвращает массив состоящий из выражения в виде строки
+// и результата вычисленного выражения
+const getRoundData = () => {
   const randomExpression = getRandomInteger(1, 10);
-  const correctAnswer = randomExpression % 2 === 0 ? 'yes' : 'no';
+  const correctAnswer = isEven(randomExpression);
   return [randomExpression, correctAnswer];
 };
 
 // Функция запуска игры
 const runEven = () => {
   const gameCondition = 'Answer "yes" if the number is even, otherwise answer "no".';
-  runGame(gameCondition, getRandomExpression);
+  runGame(gameCondition, getRoundData);
 };
 
 export default runEven;

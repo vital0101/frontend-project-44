@@ -13,21 +13,22 @@ const getProgression = () => {
   return array;
 };
 
-// Функция - возвращает массив состоящий из выражения и результата вычесленного выражения
-const getRandomExpression = () => {
+// Функция - возвращает массив состоящий из выражения в виде строки
+// и результата вычесленного выражения
+const getRoundData = () => {
   const array = getProgression();
-  const randomarrayEl = array[Math.floor(Math.random() * array.length)];
-  const correctAnswer = randomarrayEl;
-  const indexEl = array.indexOf(randomarrayEl);
+  const randomElArray = array[getRandomInteger(0, array.length - 1)];
+  const indexEl = array.indexOf(randomElArray);
   array[indexEl] = '..';
-  const strFromArray = array.join(' ');
-  return [strFromArray, correctAnswer];
+  const randomExpression = array.join(' ');
+  const correctAnswer = randomElArray;
+  return [randomExpression, correctAnswer];
 };
 
 // Функция запуска игры
 const runProgression = () => {
   const gameCondition = 'What number is missing in the progression?';
-  runGame(gameCondition, getRandomExpression);
+  runGame(gameCondition, getRoundData);
 };
 
 export default runProgression;
