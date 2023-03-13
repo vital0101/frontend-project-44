@@ -17,11 +17,10 @@ const getProgression = () => {
 // и результата вычесленного выражения
 const getRoundData = () => {
   const array = getProgression();
-  const randomElArray = array[getRandomInteger(0, array.length - 1)];
-  const indexEl = array.indexOf(randomElArray);
+  const correctAnswer = array[getRandomInteger(0, array.length - 1)];
+  const indexEl = array.indexOf(correctAnswer);
   array[indexEl] = '..';
   const randomExpression = array.join(' ');
-  const correctAnswer = randomElArray;
   return [randomExpression, correctAnswer];
 };
 

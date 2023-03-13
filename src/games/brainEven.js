@@ -1,13 +1,13 @@
 import { runGame, getRandomInteger } from '../index.js';
 
 // Функция - определяет четность числа
-const isEven = (randomNum) => (randomNum % 2 === 0 ? 'yes' : 'no');
+const isEven = (randomNum) => (randomNum % 2 === 0 ? true : false);
 
 // Функция - возвращает массив состоящий из выражения в виде строки
 // и результата вычисленного выражения
 const getRoundData = () => {
   const randomExpression = getRandomInteger(1, 10);
-  const correctAnswer = isEven(randomExpression);
+  const correctAnswer = isEven(randomExpression) === true ? 'yes' : 'no';
   return [randomExpression, correctAnswer];
 };
 

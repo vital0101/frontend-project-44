@@ -12,37 +12,14 @@ const getResultExpression = (operandOne, operandTwo, operator) => {
   let result = 0;
   switch (operator) {
     case '-':
-      result = operandOne - operandTwo;
-      break;
+      return operandOne - operandTwo;
     case '+':
-      result = operandOne + operandTwo;
-      break;
+      return operandOne + operandTwo;
     case '*':
-      result = operandOne * operandTwo;
-      break;
+      return operandOne * operandTwo;
     default:
       return result;
   }
-  return result;
-};
-
-// Функция - возвращает выражение в виде строки
-const getRandomExpression = (operandOne, operandTwo, operator) => {
-  let expression = 'This is an empty string';
-  switch (operator) {
-    case '-':
-      expression = `${operandOne} - ${operandTwo}`;
-      break;
-    case '+':
-      expression = `${operandOne} + ${operandTwo}`;
-      break;
-    case '*':
-      expression = `${operandOne} * ${operandTwo}`;
-      break;
-    default:
-      return expression;
-  }
-  return expression;
 };
 
 // Функция - возвращает массив состоящий из выражения в виде строки
@@ -52,7 +29,7 @@ const getRoundData = () => {
   const operandOne = getRandomInteger(1, 10);
   const operandTwo = getRandomInteger(1, 10);
   const correctAnswer = getResultExpression(operandOne, operandTwo, operator);
-  const randomExpression = getRandomExpression(operandOne, operandTwo, operator);
+  const randomExpression = `${operandOne} ${operator} ${operandTwo}`;
   return [randomExpression, correctAnswer];
 };
 
