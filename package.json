@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/vital0101/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/vital0101/frontend-project-44/actions)",
+  "description": "Math game",
   "main": "index.js",
   "bin": {
     "code": "bin/index.js",
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/vital0101/frontend-project-44.git"
   },
-  "author": "",
+  "author": "Vitaliy Vaskin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vital0101/frontend-project-44/issues"
