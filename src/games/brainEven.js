@@ -1,7 +1,7 @@
 import { runGame, getRandomInteger } from '../index.js';
 
 // Функция - определяет четность числа
-const isEven = (randomNum) => (randomNum % 2 === 0 ? true : false);
+const isEven = (randomNum) => randomNum % 2 === 0;
 
 // Функция - возвращает массив состоящий из выражения в виде строки
 // и результата вычисленного выражения

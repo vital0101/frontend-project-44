@@ -9,7 +9,7 @@ const getRandomOperator = () => {
 
 // Функция - возвращает разультат выражения
 const getResultExpression = (operandOne, operandTwo, operator) => {
-  let result = 0;
+  const result = 0;
   switch (operator) {
     case '-':
       return operandOne - operandTwo;
