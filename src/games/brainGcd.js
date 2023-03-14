@@ -1,5 +1,7 @@
 import { runGame, getRandomInteger } from '../index.js';
 
+const gameCondition = 'Find the greatest common divisor of given numbers.';
+
 // Функция - возвращает наибольший общий делитель для двух чисел
 const gcd = (x, y) => {
   if (y > x) return gcd(y, x);
@@ -19,7 +21,6 @@ const getRoundData = () => {
 
 // Функция запуска игры
 const runGcd = () => {
-  const gameCondition = 'Find the greatest common divisor of given numbers.';
   runGame(gameCondition, getRoundData);
 };
 

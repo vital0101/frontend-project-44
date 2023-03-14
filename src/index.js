@@ -1,20 +1,15 @@
 import readlineSync from 'readline-sync';
-
-// Функция - получение случайного числа в заданном диапозоне
-const getRandomInteger = (min, max) => {
-  const randomNum = min + Math.random() * (max + 1 - min);
-  return Math.floor(randomNum);
-};
+import getRandomInteger from './utils/randomInteger.js';
 
 // Функция - описывает логику игры
-const runGame = (gameCondition, roundData) => {
-  const counterOfRounds = 3;
+const runGame = (gameCondition, getRoundData) => {
+  const roundsCount = 3;
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log(gameCondition);
-  for (let i = 1; i <= counterOfRounds; i += 1) {
-    const [expression, correctAnswer] = roundData();
+  for (let i = 1; i <= roundsCount; i += 1) {
+    const [expression, correctAnswer] = getRoundData();
     const response = readlineSync.question(`Question: ${expression} / `);
     console.log(`Your answer: ${response}`);
     if (response !== `${correctAnswer}`) {

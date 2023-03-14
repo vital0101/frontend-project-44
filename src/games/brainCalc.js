@@ -1,10 +1,12 @@
 import { getRandomInteger, runGame } from '../index.js';
 
+const gameCondition = 'What is the result of the expression?';
+
 // Функция - получает случайный арифметический оператор в виде строки
 const getRandomOperator = () => {
-  const arr = ['-', '+', '*'];
-  const randomArrEl = arr[getRandomInteger(0, 2)];
-  return randomArrEl;
+  const operations = ['-', '+', '*'];
+  const randomArrayElement = operations[getRandomInteger(0, 2)];
+  return randomArrayElement;
 };
 
 // Функция - возвращает разультат выражения
@@ -35,7 +37,6 @@ const getRoundData = () => {
 
 // Функция запуска игры
 const runCalc = () => {
-  const gameCondition = 'What is the result of the expression?';
   runGame(gameCondition, getRoundData);
 };
 

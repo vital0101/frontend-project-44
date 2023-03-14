@@ -1,5 +1,7 @@
 import { runGame, getRandomInteger } from '../index.js';
 
+const gameCondition = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+
 // Функция - возвращает true если число простое
 const isPrime = (number) => {
   let prime = true;
@@ -21,7 +23,6 @@ const getRoundData = () => {
 
 // Функция запуска игры
 const runPrime = () => {
-  const gameCondition = 'Answer "yes" if given number is prime. Otherwise answer "no"';
   runGame(gameCondition, getRoundData);
 };
 

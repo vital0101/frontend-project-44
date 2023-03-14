@@ -1,32 +1,33 @@
 import { runGame, getRandomInteger } from '../index.js';
 
+const gameCondition = 'What number is missing in the progression?';
+
 // Функция - возвращает массив с арифметической прогрессией
 const getProgression = () => {
   const lengthProgression = 10;
   const startProgression = getRandomInteger(1, 20);
   const stepProgression = getRandomInteger(1, 20);
-  const array = [];
+  const progression = [];
   for (let i = 0; i <= lengthProgression; i += 1) {
-    const progNum = startProgression + i * stepProgression;
-    array.push(progNum);
+    const currentItem = startProgression + i * stepProgression;
+    progression.push(currentItem);
   }
-  return array;
+  return progression;
 };
 
 // Функция - возвращает массив состоящий из выражения в виде строки
 // и результата вычесленного выражения
 const getRoundData = () => {
-  const array = getProgression();
-  const correctAnswer = array[getRandomInteger(0, array.length - 1)];
-  const indexEl = array.indexOf(correctAnswer);
-  array[indexEl] = '..';
-  const randomExpression = array.join(' ');
+  const progression = getProgression();
+  const correctAnswer = progression[getRandomInteger(0, progression.length - 1)];
+  const indexEl = progression.indexOf(correctAnswer);
+  progression[indexEl] = '..';
+  const randomExpression = progression.join(' ');
   return [randomExpression, correctAnswer];
 };
 
 // Функция запуска игры
 const runProgression = () => {
-  const gameCondition = 'What number is missing in the progression?';
   runGame(gameCondition, getRoundData);
 };
 
