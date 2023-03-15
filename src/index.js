@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import getRandomInteger from './utils/randomInteger.js';
+import { getRandomInteger } from './utils.js';
 
 // Функция - описывает логику игры
 const runGame = (gameCondition, getRoundData) => {
